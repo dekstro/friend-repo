@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Queen 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffdde1, #ee9ca7);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      background-image: url('images/a7.jpg');
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    p.description {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .photo-frame {
+      width: 320px;
+      height: 320px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 10px;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .compliment {
+      font-size: 1.3rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 15px;
+      border-radius: 12px;
+      max-width: 80%;
+    }
+
+    .click-hint {
+      font-size: 0.9rem;
+      margin-top: 10px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hey Beautiful 💕</h1>
+  <p class="description">Click anywhere to see magic happen ✨</p>
+  <div class="photo-frame">
+    <img id="photo" src="images/a6.jpg" alt="Love Moment" />
+  </div>
+  <div class="compliment" id="compliment">You light up my world like nobody else. APURVA 🌟</div>
+  <p class="click-hint">Click anywhere to change the photo & compliment</p>
+
+  <script>
+    const compliments = [
+      "Your smile makes my heart skip a beat. 💖",
+      "You are my sunshine on a rainy day. ☀️",
+      "Every moment with you is a treasure. 💎",
+      "You make everything feel magical. ✨",
+      "You’re the best thing that ever happened to me. 🌹",
+      "You're my favorite hello and hardest goodbye. 💌"
+    ];
+
+    const images = [
+      "images/a1.jpg",
+      "images/a2.jpg",
+      "images/a3.jpg",
+      "images/a4.jpg"
+    ];
+
+    let currentImageIndex = 0;
+
+    document.body.addEventListener("click", () => {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      document.getElementById("photo").src = images[currentImageIndex];
+
+      const randomCompliment = compliments[Math.floor(Math.random() * compliments.length)];
+      document.getElementById("compliment").innerText = randomCompliment;
+    });
+  </script>
+</body>
+</html>
