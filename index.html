@@ -5,262 +5,252 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>For My Queen 💖</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-image: url('images/a7.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      color: #fff;
+      background: linear-gradient(to right, #1a0252, #8014c8);
       overflow-x: hidden;
+      position: relative;
+      color: #fff;
     }
 
     header {
-      position: relative;
       text-align: center;
-      padding: 50px 20px 20px;
-    }
-
-    .heart-animation {
-      width: 40px;
-      height: 40px;
-      background: url('images/h3.png') no-repeat center/contain;
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: translateX(-50%) scale(1); }
-      50% { transform: translateX(-50%) scale(1.3); }
-      100% { transform: translateX(-50%) scale(1); }
+      padding: 60px 20px 20px;
     }
 
     h1 {
       font-size: 3rem;
-      margin-top: 40px;
       color: #ffe6ec;
+      text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
     }
 
-    p.description {
-      font-size: 1.2rem;
-      margin-top: 10px;
+    .typewriter {
+      font-size: 1.3rem;
+      border-right: 2px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards;
     }
 
-    section {
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
     }
 
-    .photo-frame {
-      width: 320px;
-      height: 320px;
-      perspective: 1000px;
-      margin: 20px 0;
-    }
-
-    .flip-card-inner {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transition: transform 0.8s;
-      transform-style: preserve-3d;
-    }
-
-    .flip {
-      transform: rotateY(180deg);
-    }
-
-    .flip-card-front, .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
+    .carousel {
+      margin: 30px auto;
+      width: 300px;
+      height: 300px;
       border-radius: 20px;
       overflow: hidden;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
     }
 
-    .flip-card-front img, .flip-card-back img {
+    .carousel img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    .flip-card-back {
-      transform: rotateY(180deg);
+      border-radius: 20px;
     }
 
     .compliment {
-      font-size: 1.3rem;
-      background-color: rgba(255, 255, 255, 0.2);
-      padding: 15px;
-      border-radius: 12px;
-      max-width: 80%;
+      font-size: 1.2rem;
+      margin: 20px auto;
+      max-width: 90%;
       text-align: center;
-      margin-top: 20px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
     }
 
-    .floating-hearts {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
+    .letter {
+      max-width: 800px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      color: #fff;
     }
 
-    .heart {
-      width: 20px;
-      height: 20px;
-      background: url('images/h2.png') no-repeat center/contain;
-      position: absolute;
-      animation: float 10s infinite;
-      opacity: 0.6;
+    .letter h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffe6ec;
     }
 
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) scale(1);
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.5);
-      }
+    .love-button {
+      display: block;
+      margin: 40px auto;
+      padding: 15px 30px;
+      font-size: 1.4rem;
+      color: #fff;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 75, 43, 0.5);
+      transition: 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .love-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255, 75, 43, 0.8);
     }
 
     footer {
-      margin-top: 60px;
-      padding: 20px;
       text-align: center;
+      padding: 20px;
       font-size: 0.9rem;
       color: #fff;
-      background-color: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.2);
+      margin-top: 60px;
+    }
+
+    #stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .trail-heart {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 512 512" fill="%23ff69b4" xmlns="http://www.w3.org/2000/svg"><path d="M256 472s-182.6-97.4-240-216C-16 151.1 45.7 64 128 64c48 0 80 32 128 80 48-48 80-80 128-80 82.3 0 144 87.1 112 192-57.4 118.6-240 216-240 216z"/></svg>') no-repeat center/contain;
+      pointer-events: none;
+      animation: fade 2s ease-out forwards;
+    }
+
+    @keyframes fade {
+      to { opacity: 0; transform: scale(1.5); }
+    }
+
+    audio {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      z-index: 2;
     }
   </style>
 </head>
 <body>
 
-  <!-- Heart floating container -->
-  <div class="floating-hearts" id="floatingHearts"></div>
+  <canvas id="stars"></canvas>
 
   <header>
-    <div class="heart-animation"></div>
     <h1>Hey Beautiful 💕</h1>
-    <p class="description">Click anywhere to see the magic ✨</p>
+    <div class="typewriter" id="typewriterText">Every heartbeat of mine whispers your name... 💓</div>
   </header>
 
-  <section>
-    <div class="photo-frame">
-      <div class="flip-card-inner" id="flipCard">
-        <div class="flip-card-front">
-          <img id="photoFront" src="images/a6.jpg" alt="Love Moment Front" />
-        </div>
-        <div class="flip-card-back">
-          <img id="photoBack" src="images/a2.jpg" alt="Love Moment Back" />
-        </div>
-      </div>
-    </div>
-    <div class="compliment" id="compliment">
-      You light up my world like nobody else. APURVA🌟
-    </div>
+  <!-- IMAGE CAROUSEL -->
+  <div class="carousel">
+    <img id="carouselImg" src="images/a1.jpg" alt="Love Memory" />
+  </div>
+
+  <div class="compliment" id="compliment">You make everything feel magical ✨</div>
+
+  <section class="letter">
+    <h2>A Letter to You 💌</h2>
+    <p>
+      My dearest Apurva,<br/><br/>
+      Kuch rahe na rahe<br/>
+      Tumhari pyar ka sahara rahe<br/><br/>
+      Pyar main dooba hamesha ye dil<br/>
+      Hamara rahe<br/><br/>
+      Khushian tumhari saare<br/>
+      Gum mere ho<br/><br/>
+      Yahi dua hai<br/>
+      Ankhon mein sada chehra<br/><br/>
+      Tumhara rahe<br/><br/>
+      <strong style="color: #ffe6ec;">Forever yours 💖</strong>
+    </p>
   </section>
-  
-<!-- Love Letter Section -->
-<section>
-    <div style="max-width: 800px; background: rgba(255, 255, 255, 0.15); padding: 30px; border-radius: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
-      <h2 style="text-align:center; color: #ffe6ec; font-size: 2rem; margin-bottom: 20px;">A Letter to You 💌</h2>
-      <p style="font-size: 1.1rem; line-height: 1.7; text-align: justify; color: #fff;">
-        My dearest Apurva,<br/><br/>
-        Tu baarish mein agar kehde
-        Ja mere liye tu dhoop khila<br/><br/>
-        Toh main sooraj ko jhatak dunga
-        Toh main saawan ko gatak lunga<br/><br/>
-        To saare taaron sang chanda
-        Main teri god mein rakh dunga<br/><br/>
-        Bas mere liye tu kabhi
-        Khill ke muskura dena<br/><br/>
-        Thank you for being the reason<br/><br/>
-        <strong style="color: #ffe6ec;">Forever yours</strong>
-      </p>
-    </div>
-  </section>
-  
+
+  <button class="love-button" onclick="showCompliment()">I Love You ❤️</button>
 
   <footer>
     Made with 💗 by someone who adores you endlessly!
   </footer>
 
+  <audio controls autoplay loop>
+    <source src="audio/khariyat.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
   <script>
     const compliments = [
-      "You light up my world like nobody else. 🌟",
-      "Your smile makes my heart skip a beat. 💖",
-      "You are my sunshine on a rainy day. ☀️",
-      "Every moment with you is a treasure. 💎",
-      "You make everything feel magical. ✨",
-      "You're my favorite hello and hardest goodbye. 💌",
-      "My life became colorful after you. 🎨",
-      "You're the melody to my heart’s song. 🎵",
       "You're my forever and always. 💍",
-      "The world is better with you in it. 🌍"
+      "You light up my world. 🌟",
+      "My heart smiles because of you. 😊",
+      "You're the missing piece of my soul. 🧩",
+      "With you, life is a beautiful melody. 🎶",
+      "You make love feel magical. ✨",
+      "You're my dream come true. 💭",
+      "You're more than perfect. 💞",
+      "You're my best decision ever. 💘",
+      "Together, we are unstoppable. 🔥"
     ];
 
-    const images = [
-      "images/a1.jpg",
-      "images/a2.jpg",
-      "images/a3.jpg",
-      "images/a4.jpg",
-      "images/a8.jpg",
-      "images/a9.jpg",
-      "images/a10.jpg",
-      "images/a11.jpg",
-      "images/a12.jpg",
-      "images/a13.jpg",
-      "images/a14.jpg"
-    ];
+    function showCompliment() {
+      const complimentEl = document.getElementById("compliment");
+      const text = compliments[Math.floor(Math.random() * compliments.length)];
+      complimentEl.textContent = text;
+    }
 
-    let currentImageIndex = 0;
-    let flipped = false;
+    // Star field
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const stars = Array(100).fill().map(() => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2
+    }));
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      requestAnimationFrame(drawStars);
+    }
+    drawStars();
 
-    document.body.addEventListener("click", () => {
-      currentImageIndex = (currentImageIndex + 1) % images.length;
-      flipped = !flipped;
-
-      const flipCard = document.getElementById("flipCard");
-      flipCard.classList.toggle("flip");
-
-      const front = document.getElementById("photoFront");
-      const back = document.getElementById("photoBack");
-
-      if (flipped) {
-        back.src = images[currentImageIndex];
-      } else {
-        front.src = images[currentImageIndex];
-      }
-
-      const randomCompliment = compliments[Math.floor(Math.random() * compliments.length)];
-      document.getElementById("compliment").innerText = randomCompliment;
-
-      // Create floating heart
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.animationDuration = `${Math.random() * 5 + 5}s`;
-      document.getElementById("floatingHearts").appendChild(heart);
-
-      setTimeout(() => heart.remove(), 10000);
+    // Heart trail
+    document.body.addEventListener('mousemove', (e) => {
+      const heart = document.createElement('div');
+      heart.className = 'trail-heart';
+      heart.style.left = `${e.pageX}px`;
+      heart.style.top = `${e.pageY}px`;
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 2000);
     });
-  </script>
 
+    // Image Carousel Logic
+    const images = [
+      "images/a1.jpg", "images/a2.jpg", "images/a3.jpg", "images/a4.jpg",
+      "images/a8.jpg", "images/a9.jpg", "images/a10.jpg", "images/a11.jpg",
+      "images/a12.jpg", "images/a13.jpg", "images/a14.jpg", "images/a15.jpg",
+      "images/a16.jpg", "images/a17.jpg"
+    ];
+    let currentIndex = 0;
+    const imgElement = document.getElementById("carouselImg");
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % images.length;
+      imgElement.src = images[currentIndex];
+    }, 3000); // Change image every 3 seconds
+  </script>
 </body>
 </html>
