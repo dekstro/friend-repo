@@ -94,7 +94,7 @@
       box-shadow: 0 0 20px rgba(255, 75, 43, 0.5);
       transition: 0.3s ease;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .love-button:hover {
@@ -116,7 +116,7 @@
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      z-index: -2;
       background: transparent;
       pointer-events: none;
     }
@@ -128,6 +128,7 @@
       background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 512 512" fill="%23ff69b4" xmlns="http://www.w3.org/2000/svg"><path d="M256 472s-182.6-97.4-240-216C-16 151.1 45.7 64 128 64c48 0 80 32 128 80 48-48 80-80 128-80 82.3 0 144 87.1 112 192-57.4 118.6-240 216-240 216z"/></svg>') no-repeat center/contain;
       pointer-events: none;
       animation: fade 2s ease-out forwards;
+      z-index: 3;
     }
 
     @keyframes fade {
@@ -140,23 +141,72 @@
       left: 10px;
       z-index: 2;
     }
+
+    /* Floating heart animation */
+    .heart-animation {
+      width: 40px;
+      height: 40px;
+      background: url('images/h1.png') no-repeat center/contain;
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: pulse 2s infinite;
+      z-index: 10;
+    }
+
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.5); }
+      100% { transform: translateX(-50%) scale(1); }
+    }
+
+    .floating-hearts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .floating-hearts .heart {
+      width: 20px;
+      height: 20px;
+      background: url('images/h3.png') no-repeat center/contain;
+      position: absolute;
+      animation: float 10s infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+      }
+    }
   </style>
 </head>
 <body>
 
   <canvas id="stars"></canvas>
+  <div class="heart-animation"></div>
+  <div class="floating-hearts" id="floatingHearts"></div>
 
   <header>
     <h1>Hey Beautiful 💕</h1>
     <div class="typewriter" id="typewriterText">Every heartbeat of mine whispers your name... 💓</div>
   </header>
 
-  <!-- IMAGE CAROUSEL -->
   <div class="carousel">
     <img id="carouselImg" src="images/a1.jpg" alt="Love Memory" />
   </div>
 
-  <div class="compliment" id="compliment">You make everything feel magical Apurva✨</div>
+  <div class="compliment" id="compliment">You make everything feel magical Apurva ✨</div>
 
   <button class="love-button" onclick="showCompliment()">I Love You ❤️</button>
 
@@ -176,8 +226,6 @@
       <strong style="color: #ffe6ec;">Forever yours 💖</strong>
     </p>
   </section>
-
-  
 
   <footer>
     Made with 💗 by someone who adores you endlessly!
@@ -240,19 +288,31 @@
       setTimeout(() => heart.remove(), 2000);
     });
 
-    // Image Carousel Logic
+    // Image Carousel
     const images = [
       "images/a1.jpg", "images/a2.jpg", "images/a3.jpg", "images/a4.jpg",
       "images/a8.jpg", "images/a9.jpg", "images/a10.jpg", "images/a11.jpg",
       "images/a12.jpg", "images/a13.jpg", "images/a14.jpg", "images/a15.jpg",
-      "images/a16.jpg", "images/a17.jpg", "images/a18.jpg"
+      "images/a16.jpg", "images/a17.jpg", "images/a18.jpg", "images/a19.jpg", "images/a20.jpg", "images/a21.jpg", "images/a22.jpg", "images/a23.jpg", "images/a24.jpg"
     ];
     let currentIndex = 0;
     const imgElement = document.getElementById("carouselImg");
     setInterval(() => {
       currentIndex = (currentIndex + 1) % images.length;
       imgElement.src = images[currentIndex];
-    }, 3000); // Change image every 3 seconds
+    }, 3000);
+
+    // Floating hearts
+    const container = document.getElementById("floatingHearts");
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+      container.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+    setInterval(createHeart, 300);
   </script>
 </body>
 </html>
